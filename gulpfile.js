@@ -8,12 +8,18 @@ var concat = require('gulp-concat');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var htmlreplace = require('gulp-html-replace');
 
 
 //html压缩处理
 
 gulp.task('htmlmin', function() {
     gulp.src(['src/**/*.html', 'index.html'])
+        .pipe(htmlreplace({
+            style: gulp.src('src/html/common/style.html'),
+            aside: gulp.src('src/html/common/aside.html'),
+            header: gulp.src('src/html/common/header.html')
+        }))
         .pipe(htmlmin({
             collapseWhitespace: true, //清除页面空格
             minifyJS: true, //压缩js
@@ -34,7 +40,8 @@ gulp.task('less', function() {
 var jsLibs = [
     'node_modules/art-template/lib/template-web.js',
     'node_modules/jquery/dist/jquery.js',
-    'node_modules/bootstrap/dist/js/bootstrap.js'
+    'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/jquery-form/dist/jquery.form.min.js'
 ];
 gulp.task('jsLib', function() {
     gulp.src(jsLibs)
@@ -98,7 +105,7 @@ gulp.task('build', function() {
 gulp.task('default', function() {
     gulp.run('build');
     gulp.watch(['src/**/*.html', 'index.html'], function() {
-        gulp.run('html');
+        gulp.run('htmlmin');
     });
     gulp.watch(['src/**/*.less'], function() {
         gulp.run('less');
