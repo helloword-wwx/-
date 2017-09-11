@@ -35,7 +35,7 @@
                                 <th width="10%">操作</th>
                             </tr>
                         </thead>
-                        //
+
                     </table>
                 </div>
             </div>
@@ -44,17 +44,21 @@
     <script id="category-list-tal" type="text/tpl">
         <tbody>
             {{ each $data category i }}
-            <tr class="{{ category-cg_pid ==0?'active':" "}}">
-                <td class="text-left">{{category-cg_name}}</td>
-                <td class="text-left">{{category-cg_name}}</td>
-                <td> {{category-cg_order}} </td>
-                <td> 是 </td>
-                <td> {{category-cg_level}} </td>
+            <tr class="{{ category.cg_pid ==0?'active':''}}">
+                {{ if category.cg_pid == 0 }}
+                <td class="text-left">{{category.cg_name}}</td>
+                {{/if}} {{if category.cg_pid !=0}}
+                <td class="text-left">{{category.cg_name}}</td>
+                {{/if}}
+                <td> {{category.cg_order}}</td>
+                <td> {{category.cg_is_hide ==0?'是':'否'}} </td>
+                <td> {{category.level}}</td>
                 <td>
                     <a href="./edit.html" class="btn btn-info btn-xs"> 编辑 </a>
                 </td>
             </tr>
         </tbody>
+        {{/each}}
     </script>
     <script src="/dist/js/lib.js"></script>
     <script src="/dist/js/category/list.js"></script>
