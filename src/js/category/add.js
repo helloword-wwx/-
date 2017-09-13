@@ -12,12 +12,12 @@ require('../common/asdie.js');
  */
 $.get('/v6/category/top', function(data) {
     if (data.code == 200) {
-        $('#select-add-tpl').html(template('category-add-tpl', data.result))
+        $('#select-add-tpl').html(template('category-add-tpl', data.result));
     }
 })
 
 $('#category-add-form').ajaxForm(function(data) {
     if (data.code == 200) {
-        alert('打开新世界大门')
+        location = '/dist/html/category/list.html'
     }
-})
+});

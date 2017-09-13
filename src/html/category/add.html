@@ -21,8 +21,8 @@
             <div class="body course-category">
                 <!-- 面包屑 -->
                 <ol class="breadcrumb">
-                    <li><a href="javascript:;">课程管理</a></li>
-                    <li class="active">课程分类</li>
+                    <li><a href="javascript:;">学科管理</a></li>
+                    <li class="active">添加学科</li>
                 </ol>
                 <div class="category-add">
                     <form id="category-add-form" action="/v6/category/add" method='post' class="form-horizontal">
@@ -39,6 +39,11 @@
                                 
                                 </select>
                             </div>
+                            <!-- <div class="col-xs-2">
+                                <select id="add-tpl" name="cg_pid" class="form-control input-sm">
+                                    
+                                    </select>
+                            </div> -->
                         </div>
                         <div class="form-group">
                             <label for="" class="col-xs-4 control-label">排序</label>
@@ -68,13 +73,16 @@
         </div>
     </div>
     <script type="text/tpl" id="category-add-tpl">
-
         <option value="0">顶级分类</option>
         {{ each $data categoryTop i}}
-        <option value="categoryTop.cg_id">{{ categoryTop.cg_name }}</option>
+        <option value={{categoryTop.cg_id}}>{{ categoryTop.cg_name }}</option>
         {{/each}}
-
     </script>
+    <!-- <script type="text/tpl" id="category-tpl">
+        {{ each $data option i}}
+        <option value="{{option.cg_id}}">{{option.cg_name }}</option>
+        {{/each}}
+    </script> -->
     <script src="/dist/js/lib.js"></script>
     <script src="/dist/js/category/add.js"></script>
 </body>
