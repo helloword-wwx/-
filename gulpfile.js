@@ -18,7 +18,9 @@ gulp.task('htmlmin', function() {
         .pipe(htmlreplace({
             style: gulp.src('src/html/common/style.html'),
             aside: gulp.src('src/html/common/aside.html'),
-            header: gulp.src('src/html/common/header.html')
+            header: gulp.src('src/html/common/header.html'),
+            courseheader: gulp.src('src/html/common/course/header.html'),
+            courseaside: gulp.src('src/html/common/course/aside.html')
         }))
         .pipe(htmlmin({
             collapseWhitespace: true, //清除页面空格
@@ -41,7 +43,10 @@ var jsLibs = [
     'node_modules/art-template/lib/template-web.js',
     'node_modules/jquery/dist/jquery.js',
     'node_modules/bootstrap/dist/js/bootstrap.js',
-    'node_modules/jquery-form/dist/jquery.form.min.js'
+    'node_modules/jquery-form/dist/jquery.form.min.js',
+    'node_modules/jquery.cookie/jquery.cookie.js',
+    'node_modules/nprogress/nprogress.js'
+
 ];
 gulp.task('jsLib', function() {
     gulp.src(jsLibs)

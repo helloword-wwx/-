@@ -1,5 +1,8 @@
+require('../common/loading.js');
+require('../common/common.js');
 //当英胡点击登录按钮的时候.这个插件ajaxForm会自动监听submit事件
 //然后阻止浏览器默认的刷新提交,然后自动变成ajax的方式发送请求.
+NProgress.start();
 $('#login-form').ajaxForm({
     success: function(data) {
         if (data.code == 200) {

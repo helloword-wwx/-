@@ -1,5 +1,7 @@
 require('../common/header.js');
 require('../common/asdie.js');
+require('../common/loading.js');
+require('../common/common.js');
 
 /**
  * 功能点:
@@ -10,6 +12,8 @@ require('../common/asdie.js');
  * 2.表单提交
  *    ajaxForm 方法会判断你传入的数据类型如果对象认为是 配置,函数认为是成功回调
  */
+
+NProgress.start();
 $.get('/v6/category/top', function(data) {
     if (data.code == 200) {
         $('#select-add-tpl').html(template('category-add-tpl', data.result));

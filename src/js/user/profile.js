@@ -1,5 +1,7 @@
 require('../common/asdie.js');
 require('../common/header.js');
+require('../common/loading.js');
+require('../common/common.js');
 
 //个人中心
 /**
@@ -12,6 +14,7 @@ require('../common/header.js');
  * 2.使用模版引擎把数据嵌套到模版当中,得到数据渲染后的模版
  * template
  */
+NProgress.start();
 $.ajax({
     url: '/v6/teacher/profile',
     type: 'get',
